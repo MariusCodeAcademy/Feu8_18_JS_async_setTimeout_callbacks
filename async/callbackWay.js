@@ -5,18 +5,32 @@ console.log('callbackWay.js file was loaded');
 
 // sakysim kad mums reikia pagaminti objekta su username, town, age
 
-function getUsername() {
-  return 'James';
+function getUsername(callBack) {
+  console.log('pries timeout');
+  setTimeout(() => {
+    console.log('1. vardas: James');
+    // kviesti miesta tik kai turim varda
+    callBack();
+  }, 500);
+
+  console.log('po timeout');
 }
-function getTown() {
-  return 'London';
+function getTown(callBack) {
+  setTimeout(() => {
+    console.log('2. miestas: London');
+    // kviesti getAge tik kai gavom miesta
+    callBack();
+  }, 2500);
 }
 function getAge() {
-  return 47;
+  setTimeout(() => {
+    console.log('3. amzius: 47');
+  }, 300);
 }
 
-const fullUserObj = {
-  username: '',
-  town: '',
-  age: '',
-};
+getUsername(() => {
+  getTown(() => {
+    getAge();
+  });
+});
+// getTown();
