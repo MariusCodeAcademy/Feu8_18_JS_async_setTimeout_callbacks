@@ -28,9 +28,28 @@ function getAge() {
   }, 300);
 }
 
-getUsername(() => {
-  getTown(() => {
-    getAge();
-  });
-});
+// jei butu daugiau lygiu tai yra vadinama 'callback hell'
+// getUsername(() => {
+//   getTown(() => {
+//     getAge();
+//   });
+// });
 // getTown();
+
+function getValueAfter(callback) {
+  let rez;
+  setTimeout(() => {
+    rez = 'gryzo reikme';
+    callback('gryzo reikme');
+  }, 2000);
+  return rez;
+}
+
+const reikme = getValueAfter((reiksmePoTimeOut) => {
+  console.log('reiksmePoTimeOut ===', reiksmePoTimeOut);
+});
+console.log('reikme ===', reikme);
+
+getValueAfter((reiksmePoTimeOut) => {
+  console.log('reiksmePoTimeOut ===', reiksmePoTimeOut);
+});
