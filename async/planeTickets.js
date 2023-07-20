@@ -8,28 +8,37 @@ console.log('planeTickets.js file was loaded');
 // eiga - pending
 
 function buyPlaneTickets() {
-  return new Promise((resove, reject) => {
+  const user1 = {
+    username: 'Mike',
+    town: 'Kaunas',
+  };
+  return new Promise((resolve, reject) => {
     // imituojam kad pirkimas trunka 4 sek
     setTimeout(() => {
       // veiksma cia vyks po 4 sek
-      let isError = true;
+      let isError = false;
       //
       //
       console.log('isError ===', isError);
       // jei nera klaidos tai pavyko
+      // debugger;
       if (isError === false) {
-        resove();
+        resolve(user1);
       } else {
-        reject();
+        reject('klaida yra cia');
       }
-    }, 3000);
+    }, 2000);
   });
 }
 
 buyPlaneTickets()
-  .then(() => {
-    console.log('Geros keliones');
+  .then((u1) => {
+    console.log('Geros keliones', u1.username);
+    return u1.username.toUpperCase();
   })
-  .catch(() => {
-    console.warn('ivyko klaida');
+  .then((uNameUpper) => {
+    console.log('uNameUpper ===', uNameUpper);
+  })
+  .catch((error) => {
+    console.error('ivyko klaida', error);
   });
