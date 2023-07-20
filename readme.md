@@ -1,3 +1,7 @@
+# uzduotys
+
+## pasispreskite is pries tai paskaitu ko nesate pabaige ir teskite cia.
+
 ```javascript
 const people = [
   {
