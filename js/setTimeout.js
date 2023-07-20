@@ -29,8 +29,8 @@ function logKazka() {
   }
 }
 
-setInterval(tick, 1000);
-tick();
+// setInterval(tick, 1000);
+// tick();
 
 function tick() {
   const nowObj = new Date();
