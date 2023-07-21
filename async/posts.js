@@ -12,6 +12,7 @@ const posts = [
 // gauti postus imituojam kad truka 1.5sek juos gauti
 function getPosts() {
   setTimeout(() => {
+    console.log('Postai nupiesti');
     appEl.innerHTML = '';
     posts.forEach(({ title, body }) => {
       const pEl = document.createElement('p');
@@ -33,5 +34,5 @@ createPost({ title: 'Post Three', body: 'This is post Three body' });
 
 getPosts();
 
-// 1 iskviesti getPosts tik po to kai sukurem posta su createPost su pavadinimu
-// 2 iskviesti getPosts tik po to kai sukurem posta su createPost su callback fn
+// 1 iskviesti getPosts tik po to kai sukurem posta su createPost su callback fn
+// 2 iskviesti getPosts tik po to kai sukurem posta su createPost su Promise
