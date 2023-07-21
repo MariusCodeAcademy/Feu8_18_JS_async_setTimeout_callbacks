@@ -9,6 +9,12 @@ const posts = [
   { title: 'Post Two', body: 'This is post Two body' },
 ];
 
+function printPostTitles() {
+  posts.forEach((pObj) => {
+    console.log('pObj.title ===', pObj.title);
+  });
+}
+
 // gauti postus imituojam kad truka 1.5sek juos gauti
 function getPosts() {
   setTimeout(() => {
@@ -23,16 +29,19 @@ function getPosts() {
 }
 
 // create post funkcija kuti ideda nauja posta i pos masyva
-function createPost(newPostObj) {
+function createPost(newPostObj, callback) {
   setTimeout(() => {
     posts.push(newPostObj);
     console.log('created Post');
+    callback();
   }, 2500);
 }
 // debugger;
-createPost({ title: 'Post Three', body: 'This is post Three body' });
-
-getPosts();
-
+const thirdPost = { title: 'Post Three', body: 'This is post Three body' };
 // 1 iskviesti getPosts tik po to kai sukurem posta su createPost su callback fn
+createPost(thirdPost, getPosts);
+// createPost(thirdPost, printPostTitles);
+
+// getPosts();
+
 // 2 iskviesti getPosts tik po to kai sukurem posta su createPost su Promise
